@@ -1,23 +1,9 @@
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Link } from "expo-router";
-import CoffeCup from "@/assets/images/svg/icons/mug-saucer-solid.svg";
-
-
-
+import { StyleSheet } from "react-native";
+import { Text, View } from "react-native";
 export default function IndexScreen() {
   return (
     <View style={styles.container}>
-      <Link href='/menu/snacks/classic/' asChild>
-            <Pressable>
-              {({ pressed }) => (
-                <View >
-                  <CoffeCup width={28} height={28} />
-                </View>
-              )}
-            </Pressable>
-          </Link>
-
-      
+      <Text style={styles.title}>Explore in bar menu</Text>
     </View>
   );
 }
