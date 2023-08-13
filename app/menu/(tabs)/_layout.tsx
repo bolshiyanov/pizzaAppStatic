@@ -3,8 +3,13 @@ import FontAwesome5  from '@expo/vector-icons/FontAwesome5';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import  Entypo from '@expo/vector-icons/Entypo';   
+
+
 import {  Tabs } from 'expo-router';
 
+
+import { FontAwesomeIcon } from '@fortawesome/react-native-fontawesome'
+import { faMugSaucer } from '@fortawesome/free-solid-svg-icons/faMugSaucer'
 
 export default function TabLayout() {
 
@@ -42,8 +47,9 @@ export default function TabLayout() {
       <Tabs.Screen
         name="coffee"
         options={{
-          title: 'Hot',
-          tabBarIcon: () => <FontAwesome name="coffee" size={24} color="black" />,
+          //title: 'Hot',
+          tabBarIcon: () => <FontAwesomeIcon icon={ faMugSaucer } size={40}/>
+          // <FontAwesome name="coffee" size={24} color="black" />,
         }}
       />
       
