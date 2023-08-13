@@ -2,7 +2,7 @@ import React from "react";
 import { View, StyleSheet } from "react-native";
 import { useAppSelector } from "@/src/utils/hooks/redux";
 
-import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Heart from '@/assets/images/svg/icons/heart-solid.svg'
 
 import { tintColorLight } from "@/constants/Colors";
 
@@ -28,10 +28,10 @@ export default function Indicator(props: IndicatorProps) {
   return (
     <View style={styles.container}>
       <View style={styles.icon1}>
-        <FontAwesome name="heart" size={30} style={{ color: '#ffffff' }} />
+      <Heart width={30} height={30} fill={'white'}/>
       </View>
       <View style={styles.icon2}>
-        <FontAwesome name="heart" size={26} style={{ color: tintColorLight }} />
+      <Heart width={26} height={26} fill={tintColorLight}/>
       </View>
     </View>
   );
