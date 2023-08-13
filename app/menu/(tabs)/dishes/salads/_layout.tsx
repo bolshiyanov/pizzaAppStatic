@@ -1,4 +1,6 @@
-import { Stack } from "expo-router";
+import { Link, Stack  } from "expo-router";
+import { Pressable, StyleSheet, View } from "react-native";
+import ArrowLeft from '@/assets/images/svg/icons/arrow-left-solid.svg'
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -13,6 +15,17 @@ export default function Layout() {
         headerTitleStyle: {
           fontWeight: "400",
         },
+        headerLeft: () => (
+          <Link href="../" asChild>
+            <Pressable>
+              {({ pressed }) => (
+                <View >
+                  <ArrowLeft width={28} height={28} />
+                </View>
+              )}
+            </Pressable>
+          </Link>
+        ),
       }}
     >
       <Stack.Screen

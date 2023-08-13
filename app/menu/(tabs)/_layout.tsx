@@ -1,5 +1,11 @@
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 import FontAwesome5  from '@expo/vector-icons/FontAwesome5';
+import CoffeCup from '@/assets/images/svg/icons/mug-saucer-solid.svg';
+import Glass from '@/assets/images/svg/icons/glass-water-droplet-solid.svg';
+import Dessert from '@/assets/images/svg/icons/ice-cream-solid.svg';
+import Dishes from '@/assets/images/svg/icons/bowl-food-solid.svg';
+import Starters from '@/assets/images/svg/icons/pizza-slice-solid.svg';
+
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
 import  Entypo from '@expo/vector-icons/Entypo';   
@@ -14,7 +20,7 @@ export default function TabLayout() {
         name="snacks"
         options={{
           title: 'Snacks',
-          tabBarIcon: () => <FontAwesome5 name="pizza-slice" size={24} color="black" />,
+          tabBarIcon: () => <Starters width={28} height={28} />,
           
         }}
       />
@@ -22,28 +28,28 @@ export default function TabLayout() {
         name="dishes"
         options={{
           title: 'Dishes',
-          tabBarIcon: () => <Entypo name="bowl" size={24} color="black" />,
+          tabBarIcon: () => <Dishes width={28} height={28} />,
         }}
       />
       <Tabs.Screen
         name="dessert"
         options={{
           title: 'Dessert',
-          tabBarIcon: () => <MaterialCommunityIcons name="cupcake" size={24} color="black" />,
+          tabBarIcon: () => <Dessert width={28} height={28} />,
         }}
       />
       <Tabs.Screen
         name="drinks"
         options={{
           title: 'Drinks',
-          tabBarIcon: () => <MaterialIcons name="local-drink" size={24} color="black" />,
+          tabBarIcon: () => <Glass width={28} height={28} />,
         }}
       />
       <Tabs.Screen
         name="coffee"
         options={{
           title: 'Hot',
-          tabBarIcon: () => <FontAwesome name="coffee" size={24} color="black" />,
+          tabBarIcon: () => <CoffeCup width={34} height={34} />,
         }}
       />
       

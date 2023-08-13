@@ -1,11 +1,23 @@
-import { StyleSheet } from 'react-native';
-import { Text, View } from 'react-native';
-import Bower from '@/src/components/logos/mug-saucer-solid.svg';
+import { Pressable, StyleSheet, Text, View } from "react-native";
+import { Link } from "expo-router";
+import CoffeCup from "@/assets/images/svg/icons/mug-saucer-solid.svg";
+
+
+
 export default function IndexScreen() {
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Home</Text>
-      <Bower width={40} height={40} />
+      <Link href='/menu/snacks/classic/' asChild>
+            <Pressable>
+              {({ pressed }) => (
+                <View >
+                  <CoffeCup width={28} height={28} />
+                </View>
+              )}
+            </Pressable>
+          </Link>
+
+      
     </View>
   );
 }
@@ -13,17 +25,17 @@ export default function IndexScreen() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
+    alignItems: "center",
+    justifyContent: "center",
   },
   title: {
     fontSize: 20,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   separator: {
     marginVertical: 30,
     height: 1,
-    width: '80%',
+    width: "80%",
   },
   logo: {
     marginTop: 20,

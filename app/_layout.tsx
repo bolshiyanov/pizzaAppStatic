@@ -5,10 +5,11 @@ import { setupStore } from "@/store/store";
 
 import { Drawer } from "@/src/utils/navigations/Drawer";
 import { Link } from "expo-router";
-import { Pressable } from "react-native";
+import { Pressable, StyleSheet, View } from "react-native";
 
-import FontAwesome from "@expo/vector-icons/FontAwesome";
-import Counter from "@/src/utils/counter";
+import WishListIcon from "@/assets/images/svg/icons/heart-solid.svg";
+
+import Counter from "@/src/components/common/counter";
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -19,7 +20,7 @@ const store = setupStore();
 export default function RootLayout() {
   return (
     <Provider store={store}>
-      <Drawer>
+      <Drawer >
         <Drawer.Screen
           name="index" // This is the name of the page and must match the url from root
           options={{
@@ -34,18 +35,12 @@ export default function RootLayout() {
             title: "Menu",
             headerRight: () => (
               <Link href="/menu/modal" asChild>
-                <Pressable style={{position: 'relative'}}>
+                <Pressable>
                   {({ pressed }) => (
-                    <>
-                      <FontAwesome
-                        name="gittip"
-                        size={32}
-                        style={{ marginRight: 15, opacity: pressed ? 0.5 : 1 }}
-                      />
-                      
-      <Counter/>
-                      
-                    </>
+                    <View style={styles.container}>
+                      <WishListIcon width={28} height={28} />
+                      <View style={styles.counterBox}><Counter /></View>
+                    </View>
                   )}
                 </Pressable>
               </Link>
@@ -64,3 +59,19 @@ export default function RootLayout() {
     </Provider>
   );
 }
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    alignItems: "center",
+    justifyContent: "flex-start",
+    height: 38,
+    width: 60,
+  },
+  counterBox: {
+    flex: 1,
+    position: 'absolute',
+    start: 0,
+    right: 5
+  },
+});
