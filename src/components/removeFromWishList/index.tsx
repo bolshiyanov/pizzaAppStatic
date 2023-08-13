@@ -2,7 +2,7 @@ import React from "react";
 import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 import { wishListSlice } from "@/store/redusers/wishListReducer/wishListSlice";
 import { tintColorLight } from "@/constants/Colors";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import Trush from '@/assets/images/svg/icons/trash-can-solid.svg';
 import {
   View,
   StyleSheet,
@@ -46,12 +46,7 @@ const Page = ({ data }: { data: CoffeeDataItem[] }) => {
             style={styles.deleteIcon}
             onPress={() => unsubscribe(item.id)}
           >
-            <MaterialCommunityIcons
-              name="delete-circle"
-              size={28}
-              color={tintColorLight}
-              style={{ marginRight: 15 }}
-            />
+            <Trush width={28} height={28} fill={ tintColorLight}/>
           </TouchableOpacity>
         </View>
       ))}
@@ -87,7 +82,7 @@ const styles = StyleSheet.create({
   },
   deleteIcon: {
     position: "absolute",
-    right: 0,
+    right: 10,
   },
 });
 
