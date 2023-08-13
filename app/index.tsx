@@ -1,10 +1,18 @@
-import { StyleSheet } from "react-native";
-import { Text, View } from "react-native";
+import { StyleSheet, Text, View } from "react-native";
+import Head from "expo-router/head";
+
 export default function IndexScreen() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.title}>Explore in bar menu</Text>
-    </View>
+    <>
+      <Head>
+        
+        <title>Pizza Napoletano: 100% Italian Authenticity | Costa Adeje, Tenerife</title>
+        <meta name="description" content="Located in the prestigious Costa Adeje area in Tenerife, Pizza Napoletano restaurant invites you to savor the true flavor of Neapolitan pizza, prepared over an open fire. Discover authentic Italian cuisine in the cozy atmosphere of our restaurant." />
+      </Head>
+      <View style={styles.container}>
+        <Text style={styles.title}>Explore in bar menu</Text>
+      </View>
+    </>
   );
 }
 

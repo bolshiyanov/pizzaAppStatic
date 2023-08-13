@@ -3,11 +3,10 @@ import React from "react";
 
 import { View, StyleSheet, Image, Text } from "react-native";
 
-
 import data from "@/data/menu/coffeeData/coffeeAlcohol";
 import { currencySymbol } from "@/data/settings/currency";
 import { ScrollView } from "react-native-gesture-handler";
-
+import Head from "expo-router/head";
 import Button from "@/src/components/common/Button";
 
 const CoffeeDetails = () => {
@@ -20,10 +19,12 @@ const CoffeeDetails = () => {
 
   return (
     <ScrollView style={styles.container}>
-      
-      
       {item && (
         <>
+          <Head>
+            <title>{item.name} coffee with alcohol</title>
+            <meta name="description" content={`${item.descriptions } in Carbonara pizza`}/>
+          </Head>
           <Image style={styles.image} source={{ uri: item.image }} />
           <Text style={styles.name}>{item.name}</Text>
           <View style={styles.detailsContainer}>
@@ -36,10 +37,10 @@ const CoffeeDetails = () => {
 
             <Button id={item.id} path={path} />
 
-            {item.descritions && (
+            {item.descriptions && (
               <>
                 <Text style={styles.detailsTitle}>Details:</Text>
-                <Text style={styles.detailsText}>{item.descritions}</Text>
+                <Text style={styles.detailsText}>{item.descriptions}</Text>
               </>
             )}
             <Text style={styles.detailsTitle}>
@@ -51,7 +52,6 @@ const CoffeeDetails = () => {
           </View>
         </>
       )}
-
     </ScrollView>
   );
 };
@@ -107,7 +107,8 @@ export default CoffeeDetails;
 
 // Static exports settings
 
-export async function generateStaticParams(): Promise<Record<string, string>[]> {
-  
+export async function generateStaticParams(): Promise<
+  Record<string, string>[]
+> {
   return Promise.resolve(data.map((item) => ({ name: item.name })));
 }

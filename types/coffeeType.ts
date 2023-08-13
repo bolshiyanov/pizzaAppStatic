@@ -3,7 +3,7 @@ export interface CoffeeAlcoholInterface {
   name: string;
   type: string;
   alcohol: string;
-  descritions: string;
+  descriptions: string;
   price: number;
   order: number;
   useInPdf: boolean;
