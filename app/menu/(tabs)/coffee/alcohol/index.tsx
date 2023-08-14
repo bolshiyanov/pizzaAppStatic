@@ -14,12 +14,14 @@ import {
 import data from '@/data/menuData';
 
 import { MenuTypelInterface } from '@/types/menuType';
+const ext = '.html';
 
 const CoffeeAlcoholPage = () => {
   
   const renderItem = ({ item }: { item:  MenuTypelInterface  }) => (
     
-      <Link href={`/menu/coffee/alcohol/${item.name}`} asChild>
+
+      <Link href={`/menu/coffee/alcohol/${item.name}${ext}`} asChild>
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>

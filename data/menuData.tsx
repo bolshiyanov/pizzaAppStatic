@@ -1,7 +1,7 @@
 export default [
   {
     id: "trhergerth",
-    name: "oceanic.html",
+    name: "oceanic",
     components: "ingredient, ingredient, ingredient, ingredient, ",
     descriptions: "blablabla",
     firstType: "Starters",
@@ -19,7 +19,7 @@ export default [
   },
   {
     id: "trhergerth",
-    name: "baraquito.html",
+    name: "baraquito",
     components: "ingredient, ingredient, ingredient, ingredient, ",
     descriptions: "blablabla",
     firstType: "Starters",
