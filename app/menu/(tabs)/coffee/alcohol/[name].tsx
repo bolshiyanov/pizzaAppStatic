@@ -1,20 +1,26 @@
-import {  useLocalSearchParams } from "expo-router";
+import { useLocalSearchParams } from "expo-router";
 import React from "react";
-import { View, StyleSheet, Image, Text,} from "react-native";
+import { View, StyleSheet, Image, Text } from "react-native";
 import data from "@/data/menuData";
 import { currencySymbol } from "@/data/settings/currency";
 
 import { ScrollView } from "react-native-gesture-handler";
 
 import Button from "@/src/components/AddToWishList";
+import isProduction from "@/src/utils/isProdaction";
 
 const CoffeeDetails = () => {
   const { name } = useLocalSearchParams();
-  const selectedName = Array.isArray(name) ? name[0] : name;
+
+  let updatedName = name;
+
+  if (isProduction && typeof updatedName === "string") {
+    updatedName = updatedName.replace(".html", "");
+  }
+
+  const selectedName = Array.isArray(updatedName) ? updatedName[0] : updatedName;
 
   const item = data.find((c) => c.name.toString() === selectedName);
-  
- 
 
   return (
     <ScrollView style={styles.container}>
@@ -23,9 +29,8 @@ const CoffeeDetails = () => {
           <Image style={styles.image} source={{ uri: item.image }} />
           <Text style={styles.name}>{item.name}</Text>
           <View style={styles.detailsContainer}>
-            
-          <Button id={item.id}  />
-          
+            <Button id={item.id} />
+
             {item.descriptions && (
               <>
                 <Text style={styles.detailsTitle}>Details:</Text>
@@ -35,14 +40,13 @@ const CoffeeDetails = () => {
             <Text style={styles.detailsTitle}>
               Price:{" "}
               <Text style={styles.detailsPrice}>
-                &nbsp;1,2&nbsp;{currencySymbol}&nbsp;
+                &nbsp;1.2&nbsp;{currencySymbol}&nbsp;
               </Text>
             </Text>
           </View>
         </>
       )}
-
-          </ScrollView>
+    </ScrollView>
   );
 };
 
@@ -96,7 +100,8 @@ export default CoffeeDetails;
 
 // Static exports settings
 
-export async function generateStaticParams(): Promise<Record<string, string>[]> {
-  
+export async function generateStaticParams(): Promise<
+  Record<string, string>[]
+> {
   return Promise.resolve(data.map((item) => ({ name: item.name })));
 }
