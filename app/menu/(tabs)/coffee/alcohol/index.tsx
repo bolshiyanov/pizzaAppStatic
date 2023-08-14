@@ -1,6 +1,7 @@
-import { Link, Stack  } from 'expo-router';
-import React from 'react';
+import { Link, Stack } from "expo-router";
+import React from "react";
 import Indicator from "@/src/components/common/Indicator";
+import isProduction from "@/src/utils/isProdaction";
 
 import {
   View,
@@ -9,26 +10,26 @@ import {
   Text,
   FlatList,
   Pressable,
-} from 'react-native';
+} from "react-native";
 
-import data from '@/data/menuData';
+import data from "@/data/menuData";
 
-import { MenuTypelInterface } from '@/types/menuType';
-const ext = '.html';
+import { MenuTypelInterface } from "@/types/menuType";
+
+const path = "/menu/coffee/alcohol/";
 
 const CoffeeAlcoholPage = () => {
-  
-  const renderItem = ({ item }: { item:  MenuTypelInterface  }) => (
-    
-
-      <Link href={`/menu/coffee/alcohol/${item.name}${ext}`} asChild>
+  const renderItem = ({ item }: { item: MenuTypelInterface }) => (
+    <Link
+      href={`${path}${isProduction ? item.name + ".html" : item.name}`}
+      asChild
+    >
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
         <Indicator id={item.id} />
       </Pressable>
     </Link>
-    
   );
 
   return (
@@ -44,29 +45,28 @@ const CoffeeAlcoholPage = () => {
 const styles = StyleSheet.create({
   container: {
     padding: 16,
-    backgroundColor: '#F5F5F5',
+    backgroundColor: "#F5F5F5",
   },
   city: {
     flex: 1,
     aspectRatio: 1,
     marginHorizontal: 8,
     marginBottom: 16,
-    backgroundColor: '#FFFFFF',
+    backgroundColor: "#FFFFFF",
     borderRadius: 8,
     elevation: 2,
-    overflow: 'hidden',
+    overflow: "hidden",
   },
   image: {
-    width: '100%',
-    height: '70%',
+    width: "100%",
+    height: "70%",
   },
   name: {
-    textAlign: 'center',
+    textAlign: "center",
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginTop: 8,
   },
 });
-
 
 export default CoffeeAlcoholPage;
