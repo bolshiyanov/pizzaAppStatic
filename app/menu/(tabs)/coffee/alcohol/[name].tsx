@@ -7,7 +7,7 @@ import data from "@/data/menu/coffeeData/coffeeAlcohol";
 import { currencySymbol } from "@/data/settings/currency";
 import { ScrollView } from "react-native-gesture-handler";
 import Head from "expo-router/head";
-import Button from "@/src/components/common/Button";
+import AddToWishList from "@/src/components/AddToWishList";
 
 const CoffeeDetails = () => {
   const { name } = useLocalSearchParams();
@@ -15,15 +15,13 @@ const CoffeeDetails = () => {
 
   const item = data.find((c) => c.name.toString() === selectedName);
 
-  const path = "/menu/coffee/alcohol/";
-
   return (
     <ScrollView style={styles.container}>
       {item && (
         <>
           <Head>
-            <title>{item.name} coffee with alcohol</title>
-            <meta name="description" content={`${item.descriptions } in Carbonara pizza`}/>
+            <title>{item.name}</title>
+            <meta name="description" content={`${item.descriptions }`}/>
           </Head>
           <Image style={styles.image} source={{ uri: item.image }} />
           <Text style={styles.name}>{item.name}</Text>
@@ -35,7 +33,7 @@ const CoffeeDetails = () => {
               </Text>
             )}
 
-            <Button id={item.id} path={path} />
+            <AddToWishList id={item.id} />
 
             {item.descriptions && (
               <>

@@ -1,7 +1,6 @@
 import { Link, Stack  } from "expo-router";
 import { Pressable, StyleSheet, View } from "react-native";
 import ArrowLeft from '@/assets/images/svg/icons/arrow-left-solid.svg'
-
 export const unstable_settings = {
   initialRouteName: "index",
 };

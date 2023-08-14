@@ -2,6 +2,8 @@ import { Link, Stack } from "expo-router";
 import React from "react";
 import Indicator from "@/src/components/common/Indicator";
 import Head from "expo-router/head";
+import { sanitizeString } from "@/src/utils/sanitizeString";
+import isProdaction from "@/src/utils/isProdaction";
 
 import {
   View,
@@ -12,13 +14,25 @@ import {
   Pressable,
 } from "react-native";
 
-import data from "@/data/menu/coffeeData/coffeeAlcohol";
+import data from "@/data/menuData";
+import { MenuTypelInterface } from "@/types/menuType";
 
-import { CoffeeAlcoholInterface } from "@/types/coffeeType";
+
+const path = "/menu/coffee/alcohol/";
+const metaTitle = "Coffee with alcohol";
+const metaDescription =
+  "Coffee with alcohol Coffee with alcohol Coffee with alcohol Coffee with alcohol Coffee with alcohol";
 
 const CoffeePage = () => {
-  const renderItem = ({ item }: { item: CoffeeAlcoholInterface }) => (
-    <Link href={`/menu/coffee/alcohol/${item.name}`} asChild>
+  const renderItem = ({ item }: { item: MenuTypelInterface }) => (
+    <Link
+      href={`${path}${
+        isProdaction
+          ? sanitizeString(item.name) + ".html"
+          : sanitizeString(item.name)
+      }`}
+      asChild
+    >
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
@@ -30,8 +44,8 @@ const CoffeePage = () => {
   return (
     <>
       <Head>
-        <title>Coffee with alcohol</title>
-        <meta name="description" content="In this section, you'll discover an array of coffee options infused with a touch of elegance. Indulge in the captivating fusion of flavors as we present a diverse collection of coffee with alcohol. From classic Irish coffee to innovative creations, our menu offers a delightful range of choices that blend the rich allure of coffee with the spirited essence of select alcohols. Elevate your coffee experience with our harmonious concoctions, perfect for those seeking a sophisticated and delightful indulgence." />
+        <title>{metaTitle}</title>
+        <meta name="description" content={metaDescription} />
       </Head>
       <FlatList
         data={data}

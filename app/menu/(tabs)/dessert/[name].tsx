@@ -7,7 +7,7 @@ import { currencySymbol } from "@/data/settings/currency";
 
 import { ScrollView } from "react-native-gesture-handler";
 
-import Button from "@/src/components/common/Button";
+import Button from "@/src/components/AddToWishList";
 
 const DessertDetails = () => {
   const { name } = useLocalSearchParams();

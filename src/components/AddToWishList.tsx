@@ -1,26 +1,18 @@
 import React from "react";
-import { useRouter } from "expo-router";
 import { View, Text, StyleSheet, Pressable } from "react-native";
 import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 import { wishListSlice } from "@/store/redusers/wishListReducer/wishListSlice";
 
-import { Feather } from "@expo/vector-icons";
+
 
 import { tintColorLight } from "@/constants/Colors";
 
 interface ButtonProps {
   id: string;
-  path: string;
 }
 
 export default function Button(props: ButtonProps) {
-  const { id, path } = props;
-
-  const router = useRouter();
-
-  const handlePressBack = () => {
-    router.replace(path as any);
-  };
+  const { id } = props;
 
   const { addToWishList, removeFromWishList } = wishListSlice.actions;
 
