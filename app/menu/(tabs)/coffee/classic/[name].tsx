@@ -25,7 +25,7 @@ const CoffeeDetails = () => {
           <Text style={styles.name}>{item.name}</Text>
           <View style={styles.detailsContainer}>
             
-          <Button id={item.id} path={path} />
+          <Button id={item.id}  />
           
             {item.descritions && (
               <>

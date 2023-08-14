@@ -1,7 +1,7 @@
 export default [
     {
       id: "rtyevrther",
-      name: 'Americano',
+      name: 'americano.html',
       type: 'Coffee',
       descritions: "blablabla",
       price: 1.2,

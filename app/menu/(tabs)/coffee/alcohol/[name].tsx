@@ -1,40 +1,31 @@
-import { useLocalSearchParams } from "expo-router";
+import {  useLocalSearchParams } from "expo-router";
 import React from "react";
-
-import { View, StyleSheet, Image, Text } from "react-native";
-
-import data from "@/data/menu/coffeeData/coffeeAlcohol";
+import { View, StyleSheet, Image, Text,} from "react-native";
+import data from "@/data/menuData";
 import { currencySymbol } from "@/data/settings/currency";
+
 import { ScrollView } from "react-native-gesture-handler";
-import Head from "expo-router/head";
-import AddToWishList from "@/src/components/AddToWishList";
+
+import Button from "@/src/components/AddToWishList";
 
 const CoffeeDetails = () => {
   const { name } = useLocalSearchParams();
   const selectedName = Array.isArray(name) ? name[0] : name;
 
   const item = data.find((c) => c.name.toString() === selectedName);
+  
+ 
 
   return (
     <ScrollView style={styles.container}>
       {item && (
         <>
-          <Head>
-            <title>{item.name}</title>
-            <meta name="description" content={`${item.descriptions }`}/>
-          </Head>
           <Image style={styles.image} source={{ uri: item.image }} />
           <Text style={styles.name}>{item.name}</Text>
           <View style={styles.detailsContainer}>
-            {item.alcohol && (
-              <Text style={styles.detailsTitle}>
-                Alcohol:
-                <Text style={styles.detailsText}>&nbsp;{item.alcohol}</Text>
-              </Text>
-            )}
-
-            <AddToWishList id={item.id} />
-
+            
+          <Button id={item.id}  />
+          
             {item.descriptions && (
               <>
                 <Text style={styles.detailsTitle}>Details:</Text>
@@ -44,13 +35,14 @@ const CoffeeDetails = () => {
             <Text style={styles.detailsTitle}>
               Price:{" "}
               <Text style={styles.detailsPrice}>
-                &nbsp;{item.price}&nbsp;{currencySymbol}&nbsp;
+                &nbsp;1,2&nbsp;{currencySymbol}&nbsp;
               </Text>
             </Text>
           </View>
         </>
       )}
-    </ScrollView>
+
+          </ScrollView>
   );
 };
 
@@ -88,7 +80,6 @@ const styles = StyleSheet.create({
   detailsText: {
     fontSize: 16,
     lineHeight: 24,
-    fontWeight: "400",
   },
   backButton: {
     position: "absolute",
@@ -105,8 +96,7 @@ export default CoffeeDetails;
 
 // Static exports settings
 
-export async function generateStaticParams(): Promise<
-  Record<string, string>[]
-> {
+export async function generateStaticParams(): Promise<Record<string, string>[]> {
+  
   return Promise.resolve(data.map((item) => ({ name: item.name })));
 }
