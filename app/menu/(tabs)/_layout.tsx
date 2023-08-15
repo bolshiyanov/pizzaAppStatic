@@ -1,8 +1,8 @@
-import CoffeCup from '@/assets/images/svg/icons/mug-saucer-solid.svg';
-import Glass from '@/assets/images/svg/icons/glass-water-droplet-solid.svg';
-import Dessert from '@/assets/images/svg/icons/ice-cream-solid.svg';
-import Dishes from '@/assets/images/svg/icons/bowl-food-solid.svg';
-import Starters from '@/assets/images/svg/icons/pizza-slice-solid.svg';
+import ItemIcom1 from '@/assets/images/svg/icons/building-flag-solid.svg';
+import ItemIcom2 from '@/assets/images/svg/icons/building-wheat-solid.svg';
+import ItemIcom3 from '@/assets/images/svg/icons/city-solid.svg';
+import ItemIcom4 from '@/assets/images/svg/icons/mountain-city-solid.svg';
+import ItemIcom5 from '@/assets/images/svg/icons/tree-city-solid.svg';
 
 import {  Tabs } from 'expo-router';
 
@@ -15,7 +15,7 @@ export default function TabLayout() {
         name="itemsOne"
         options={{
           title: 'One',
-          tabBarIcon: () => <Starters width={28} height={28} />,
+          tabBarIcon: () => <ItemIcom1 width={28} height={28} />,
           
         }}
       />
@@ -23,28 +23,28 @@ export default function TabLayout() {
         name="itemsTwo"
         options={{
           title: 'Two',
-          tabBarIcon: () => <Dishes width={28} height={28} />,
+          tabBarIcon: () => <ItemIcom2 width={28} height={28} />,
         }}
       />
       <Tabs.Screen
         name="itemsThree"
         options={{
           title: 'Three',
-          tabBarIcon: () => <Dessert width={28} height={28} />,
+          tabBarIcon: () => <ItemIcom3 width={28} height={28} />,
         }}
       />
       <Tabs.Screen
         name="itemsFour"
         options={{
           title: 'Four',
-          tabBarIcon: () => <Glass width={28} height={28} />,
+          tabBarIcon: () => <ItemIcom4 width={28} height={28} />,
         }}
       />
       <Tabs.Screen
         name="itemsFive"
         options={{
           title: 'Five',
-          tabBarIcon: () => <CoffeCup width={34} height={34} />,
+          tabBarIcon: () => <ItemIcom5 width={34} height={34} />,
         }}
       />
       

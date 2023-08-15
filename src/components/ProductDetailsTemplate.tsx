@@ -1,4 +1,5 @@
 import { useLocalSearchParams } from "expo-router";
+import Head from "expo-router/head";
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
 import { currencySymbol } from "@/data/settings/currency";
@@ -8,11 +9,11 @@ import isProduction from "@/src/utils/isProdaction";
 import { MenuTypelInterface } from "@/types/menuType";
 
 interface ProductsFeedPageTemplateProps {
-  data: MenuTypelInterface[]
+  data: MenuTypelInterface[];
 }
 
 const ProductDetailsTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
-  data
+  data,
 }) => {
   const { name } = useLocalSearchParams();
 
@@ -29,30 +30,36 @@ const ProductDetailsTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
   const item = data.find((c) => c.name.toString() === selectedName);
 
   return (
-    <ScrollView style={styles.container}>
-      {item && (
-        <>
-          <Image style={styles.image} source={{ uri: item.image }} />
-          <Text style={styles.name}>{item.name}</Text>
-          <View style={styles.detailsContainer}>
-            <AddToWishList id={item.id} />
+    <>
+      {item && (<Head>
+        <title>{item.name}</title>
+        <meta name="description" content={item.descriptions} />
+      </Head>)}
+      <ScrollView style={styles.container}>
+        {item && (
+          <>
+            <Image style={styles.image} source={{ uri: item.image }} />
+            <Text style={styles.name}>{item.name}</Text>
+            <View style={styles.detailsContainer}>
+              <AddToWishList id={item.id} />
 
-            {item.descriptions && (
-              <>
-                <Text style={styles.detailsTitle}>Details:</Text>
-                <Text style={styles.detailsText}>{item.descriptions}</Text>
-              </>
-            )}
-            <Text style={styles.detailsTitle}>
-              Price:{" "}
-              <Text style={styles.detailsPrice}>
-                &nbsp;1.2&nbsp;{currencySymbol}&nbsp;
+              {item.descriptions && (
+                <>
+                  <Text style={styles.detailsTitle}>Details:</Text>
+                  <Text style={styles.detailsText}>{item.descriptions}</Text>
+                </>
+              )}
+              <Text style={styles.detailsTitle}>
+                Price:{" "}
+                <Text style={styles.detailsPrice}>
+                  &nbsp;1.2&nbsp;{currencySymbol}&nbsp;
+                </Text>
               </Text>
-            </Text>
-          </View>
-        </>
-      )}
-    </ScrollView>
+            </View>
+          </>
+        )}
+      </ScrollView>
+    </>
   );
 };
 
@@ -102,6 +109,4 @@ const styles = StyleSheet.create({
   },
 });
 
-
 export default ProductDetailsTemplate;
-
