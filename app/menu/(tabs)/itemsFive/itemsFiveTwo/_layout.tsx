@@ -10,7 +10,7 @@ export default function Layout() {
     <Stack
       screenOptions={{
         headerShown: true,
-        title: "ITEMS-5-1",
+        title: "ITEMS-5-2",
         headerTitleStyle: {
           fontWeight: "400",
         },

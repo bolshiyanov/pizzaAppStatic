@@ -1,14 +1,9 @@
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import FontAwesome5  from '@expo/vector-icons/FontAwesome5';
 import CoffeCup from '@/assets/images/svg/icons/mug-saucer-solid.svg';
 import Glass from '@/assets/images/svg/icons/glass-water-droplet-solid.svg';
 import Dessert from '@/assets/images/svg/icons/ice-cream-solid.svg';
 import Dishes from '@/assets/images/svg/icons/bowl-food-solid.svg';
 import Starters from '@/assets/images/svg/icons/pizza-slice-solid.svg';
 
-import MaterialIcons from '@expo/vector-icons/MaterialIcons';
-import MaterialCommunityIcons from '@expo/vector-icons/MaterialCommunityIcons';
-import  Entypo from '@expo/vector-icons/Entypo';   
 import {  Tabs } from 'expo-router';
 
 
@@ -17,31 +12,31 @@ export default function TabLayout() {
   return (
     <Tabs screenOptions={{headerShown: false}}>
       <Tabs.Screen
-        name="snacks"
+        name="itemsOne"
         options={{
-          title: 'Snacks',
+          title: 'One',
           tabBarIcon: () => <Starters width={28} height={28} />,
           
         }}
       />
       <Tabs.Screen
-        name="dishes"
+        name="itemsTwo"
         options={{
-          title: 'Dishes',
+          title: 'Two',
           tabBarIcon: () => <Dishes width={28} height={28} />,
         }}
       />
       <Tabs.Screen
-        name="dessert"
+        name="itemsThree"
         options={{
-          title: 'Dessert',
+          title: 'Three',
           tabBarIcon: () => <Dessert width={28} height={28} />,
         }}
       />
       <Tabs.Screen
-        name="drinks"
+        name="itemsFour"
         options={{
-          title: 'Drinks',
+          title: 'Four',
           tabBarIcon: () => <Glass width={28} height={28} />,
         }}
       />

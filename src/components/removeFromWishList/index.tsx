@@ -12,17 +12,17 @@ import {
 } from "react-native";
 
 
-interface CoffeeDataItem {
+interface dataItemInterface {
   id: string;
   name: string;
-  type: string;
+  firstType: string;
   image: string;
  
 }
 
 const { removeFromWishList } = wishListSlice.actions;
 
-const Page = ({ data }: { data: CoffeeDataItem[] }) => {
+const Page = ({ data }: { data: dataItemInterface[] }) => {
   const { items: wishList } = useAppSelector((state) => state.wishListReducer);
   const wishCaffeAlcoholDataNew = data.filter((item) =>
     wishList.includes(item.id)
@@ -40,7 +40,7 @@ const Page = ({ data }: { data: CoffeeDataItem[] }) => {
           <Image style={styles.image} source={{ uri: item.image }} />
           <View>
             <Text style={styles.title}>{item.name}</Text>
-            <Text style={styles.subTitle}>{item.type}</Text> 
+            <Text style={styles.subTitle}>{item.firstType}</Text> 
           </View>
           <TouchableOpacity
             style={styles.deleteIcon}

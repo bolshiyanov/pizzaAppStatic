@@ -1,6 +1,6 @@
 export default [
   {
-    id: "trhergersth",
+    id: "trhqewrfgqergersth",
     name: "items-5-3-1",
     components: "ingredient, ingredient, ingredient, ingredient, ",
     descriptions: "blablabla",
@@ -18,7 +18,7 @@ export default [
     image: "https://source.unsplash.com/weekly?new-york-city"    
   },
   {
-    id: "trhergerth",
+    id: "trhergergwegrth",
     name: "items-5-3-2",
     components: "ingredient, ingredient, ingredient, ingredient, ",
     descriptions: "blablabla",
