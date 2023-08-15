@@ -31,10 +31,34 @@ const ProductDetailsTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
 
   return (
     <>
-      {item && (<Head>
-        <title>{item.name}</title>
-        <meta name="description" content={item.descriptions} />
-      </Head>)}
+      {item && (
+        <Head>
+          <title>{item.name}</title>
+          <meta name="description" content={item.descriptions} />
+
+          <meta property="og:type" content="article" />
+          <meta
+            property="og:title"
+            content={item.name}
+          />
+          <meta
+            property="og:description"
+            content={item.descriptions}
+          />
+          <meta property="og:image" content={ item.image } />
+          <meta property="og:url" content="PERMALINK" />
+          <meta property="og:site_name" content="REACT STATIC APP FOR SEO AND NATIVE APPS FROM EXPO-ROUTER v2" />
+
+          <meta name="twitter:title" content={item.name} />
+          <meta
+            name="twitter:description"
+            content={item.descriptions}
+          />
+          <meta name="twitter:image" content={ item.image } />
+          <meta name="twitter:site" content="@BOLSHIYANOV" />
+          <meta name="twitter:creator" content="@BOLSHIYANOV" />
+        </Head>
+      )}
       <ScrollView style={styles.container}>
         {item && (
           <>
