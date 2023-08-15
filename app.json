@@ -1,5 +1,8 @@
 {
   "expo": {
+    "experiments": {
+      "typedRoutes": true
+    },
     "name": "myPizzaApp",
     "slug": "myPizzaApp",
     "version": "1.0.0",

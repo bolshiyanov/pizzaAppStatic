@@ -46,9 +46,9 @@ export default function TabLayout() {
         }}
       />
       <Tabs.Screen
-        name="coffee"
+        name="itemsFive"
         options={{
-          title: 'Hot',
+          title: 'Five',
           tabBarIcon: () => <CoffeCup width={34} height={34} />,
         }}
       />

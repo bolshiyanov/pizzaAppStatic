@@ -7,11 +7,11 @@ import { wishListSlice } from "@/store/redusers/wishListReducer/wishListSlice";
 
 import { tintColorLight } from "@/constants/Colors";
 
-interface ButtonProps {
+interface AddToWishListProps {
   id: string;
 }
 
-export default function Button(props: ButtonProps) {
+export default function AddToWishList(props: AddToWishListProps) {
   const { id } = props;
 
   const { addToWishList, removeFromWishList } = wishListSlice.actions;
