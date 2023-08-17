@@ -13,12 +13,12 @@ import { Pressable, StyleSheet, View } from "react-native";
 import Bar from "@/assets/images/svg/icons/bars-solid.svg";
 import WishListIcon from "@/assets/images/svg/icons/heart-solid.svg";
 import Home from "@/assets/images/svg/icons/house-solid.svg";
+import Star from "@/assets/images/svg/icons/star-solid.svg";
 import Book from "@/assets/images/svg/icons/book-open-solid.svg";
 import Location from "@/assets/images/svg/icons/map-location-dot-solid.svg";
-
+import ArrowLeft from "@/assets/images/svg/icons/arrow-left-solid.svg";
 
 import Counter from "@/src/components/common/counter";
-
 
 export const unstable_settings = {
   initialRouteName: "index",
@@ -27,13 +27,11 @@ export const unstable_settings = {
 const store = setupStore();
 
 export default function RootLayout() {
-  
   const navigation = useNavigation();
 
   const openDrawer = () => {
     navigation.dispatch(DrawerActions.openDrawer());
   };
-
 
   return (
     <Provider store={store}>
@@ -47,6 +45,8 @@ export default function RootLayout() {
               )}
             </Pressable>
           ),
+          
+          
         }}
       >
         <Drawer.Screen
@@ -86,6 +86,26 @@ export default function RootLayout() {
             drawerLabel: "Contact",
             title: "contact",
             drawerIcon: (config) => <Location width={28} height={28} />,
+          }}
+        />
+
+        <Drawer.Screen
+          name="[name]" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: () => null,
+            headerLeft: () => (
+              <Link href="../" asChild>
+                <Pressable>
+                  {({ pressed }) => (
+                    <View>
+                      <ArrowLeft width={28} height={28} />
+                    </View>
+                  )}
+                </Pressable>
+              </Link>
+            ),
+            
+            title: "collections",
           }}
         />
       </Drawer>

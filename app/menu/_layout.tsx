@@ -6,7 +6,7 @@ export default function RootLayout() {
   return (
     <Stack>
       <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-      <Stack.Screen
+      {/* <Stack.Screen
         name="modal"
         options={{
           presentation: "modal",
@@ -23,7 +23,7 @@ export default function RootLayout() {
             </Link>
           ),
         }}
-      />
+      /> */}
     </Stack>
   );
 }

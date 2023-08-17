@@ -2,11 +2,13 @@ import { useLocalSearchParams } from "expo-router";
 import Head from "expo-router/head";
 import React from "react";
 import { View, StyleSheet, Image, Text } from "react-native";
-import { currencySymbol } from "@/data/settings/currency";
+
 import { ScrollView } from "react-native-gesture-handler";
 import AddToWishList from "@/src/components/AddToWishList";
 import isProduction from "@/src/utils/isProdaction";
 import { MenuTypelInterface } from "@/types/menuType";
+
+import { currencySymbol } from "@/data/settings/currency";
 
 interface ProductsFeedPageTemplateProps {
   data: MenuTypelInterface[];

@@ -1,5 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import wishListSlice from "@/store/redusers/wishListReducer/wishListSlice";
+import allDataSlice from "./redusers/dataReducers/combineDataReducer/allDataSlice";
  
 import oneOneDataSlice from "@/store/redusers/dataReducers/oneDataReducers/oneOneSlice";
 import oneTwoDataSlice from "@/store/redusers/dataReducers/oneDataReducers/oneTwoSlice";
@@ -23,6 +24,7 @@ import fiveThreeDataSlice from "@/store/redusers/dataReducers/fiveDataReducers/f
 
 const rootReducer = combineReducers({
   wishListSlice,
+  allDataSlice,
 
   oneOneDataSlice,
   oneTwoDataSlice,

@@ -3,8 +3,6 @@ import { View, Text, StyleSheet, Pressable } from "react-native";
 import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 import { wishListSlice } from "@/store/redusers/wishListReducer/wishListSlice";
 
-
-
 import { tintColorLight } from "@/constants/Colors";
 
 interface AddToWishListProps {
