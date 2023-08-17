@@ -13,7 +13,7 @@ interface IndicatorProps {
 export default function Indicator(props: IndicatorProps) {
   const { id } = props;
   
-  const { items: wishList } = useAppSelector((state) => state.wishListReducer);
+  const { items: wishList } = useAppSelector((state) => state.wishListSlice);
 
   const hasItemInWishList = wishList.includes(id);
 

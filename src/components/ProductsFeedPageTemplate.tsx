@@ -5,7 +5,15 @@ import React from "react";
 import Indicator from "@/src/components/common/Indicator";
 import isProduction from "@/src/utils/isProdaction";
 
-import { StyleSheet, Image, Text, FlatList, Pressable } from "react-native";
+import {
+  ActivityIndicator,
+  StyleSheet,
+  Image,
+  Text,
+  View,
+  FlatList,
+  Pressable,
+} from "react-native";
 import { MenuTypelInterface } from "@/types/menuType";
 
 interface ProductsFeedPageTemplateProps {
@@ -17,10 +25,17 @@ const ProductsFeedPageTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
   data,
   path,
 }) => {
+
+  if (!data)
+    return (
+      <View style={[styles.containerActivityIndicator, styles.horizontal]}>
+        <ActivityIndicator size="large" />
+      </View>
+    );
+
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
-   
-    <Link href={`${path}${isProduction ? item.name + ".html" : item.name}`} 
-    
+    <Link
+      href={`${path}${isProduction ? item.name + ".html" : item.name}`}
       asChild
     >
       <Pressable style={styles.city}>
@@ -65,6 +80,15 @@ const styles = StyleSheet.create({
     fontSize: 14,
     fontWeight: "bold",
     marginTop: 8,
+  },
+  containerActivityIndicator: {
+    flex: 1,
+    justifyContent: "center",
+  },
+  horizontal: {
+    flexDirection: "row",
+    justifyContent: "space-around",
+    padding: 10,
   },
 });
 

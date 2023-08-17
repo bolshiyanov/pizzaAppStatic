@@ -1,6 +1,7 @@
 
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
+
 interface WishListState {
   items: string[];
   count: number;
@@ -11,7 +12,7 @@ const initialState: WishListState = {
   count: 0,
 };
 
-export const wishListSlice = createSlice({
+export  const wishListSlice = createSlice({
   name: "wishList",
   initialState,
   reducers: {

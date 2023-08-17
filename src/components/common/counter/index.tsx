@@ -5,7 +5,7 @@ import { tintColorLight } from '@/constants/Colors';
 
 export default function Counter() {
 
-  const { count: wishList } = useAppSelector((state) => state.wishListReducer);
+  const { count: wishList } = useAppSelector((state) => state.wishListSlice);
 
   return (
     <View style={styles.container}>

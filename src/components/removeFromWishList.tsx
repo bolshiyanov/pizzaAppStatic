@@ -23,7 +23,7 @@ interface dataItemInterface {
 const { removeFromWishList } = wishListSlice.actions;
 
 const Page = ({ data }: { data: dataItemInterface[] }) => {
-  const { items: wishList } = useAppSelector((state) => state.wishListReducer);
+  const { items: wishList } = useAppSelector((state) => state.wishListSlice);
   const wishCaffeAlcoholDataNew = data.filter((item) =>
     wishList.includes(item.id)
   );

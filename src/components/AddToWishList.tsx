@@ -16,7 +16,7 @@ export default function AddToWishList(props: AddToWishListProps) {
 
   const { addToWishList, removeFromWishList } = wishListSlice.actions;
 
-  const { items: wishList } = useAppSelector((state) => state.wishListReducer);
+  const { items: wishList } = useAppSelector((state) => state.wishListSlice);
 
   const dispatch = useAppDispatch();
 
