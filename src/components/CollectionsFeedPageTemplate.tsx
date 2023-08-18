@@ -30,7 +30,7 @@ const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
     // Use the utility function here
 
     dispatch(addData(transformedData)); // Dispatch the fetchData action when the component mounts
-    console.log("transformedData ", transformedData);
+    
   }, [data]);
 
   if (!data)

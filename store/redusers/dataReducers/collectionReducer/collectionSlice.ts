@@ -2,6 +2,7 @@ import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { TransformInterface } from "@/types/transformType";
 
 interface MyDateState extends TransformInterface  {
+  ids: string[];
   // You can add any additional properties specific to your use case here
 }
 const initialState: MyDateState[] = [];
@@ -12,6 +13,7 @@ export const collectiosSlice = createSlice({
   reducers: {
     addData: (state, action: PayloadAction<TransformInterface []>) => {
       state.push(...action.payload);
+      
     },
   },
 });
