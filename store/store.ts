@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import wishListSlice from "@/store/redusers/wishListReducer/wishListSlice";
 import allDataSlice from "./redusers/dataReducers/combineDataReducer/allDataSlice";
- 
+import collectionSlice from "./redusers/dataReducers/collectionReducer/collectionSlice";
 import oneOneDataSlice from "@/store/redusers/dataReducers/oneDataReducers/oneOneSlice";
 import oneTwoDataSlice from "@/store/redusers/dataReducers/oneDataReducers/oneTwoSlice";
 import oneThreeDataSlice from "@/store/redusers/dataReducers/oneDataReducers/oneThreeSlice";
@@ -25,11 +25,12 @@ import fiveThreeDataSlice from "@/store/redusers/dataReducers/fiveDataReducers/f
 const rootReducer = combineReducers({
   wishListSlice,
   allDataSlice,
+  collectionSlice,
 
   oneOneDataSlice,
   oneTwoDataSlice,
   oneThreeDataSlice,
-  
+
   twoOneDataSlice,
   twoTwoDataSlice,
   twoThreeDataSlice,
@@ -45,7 +46,6 @@ const rootReducer = combineReducers({
   fiveOneDataSlice,
   fiveTwoDataSlice,
   fiveThreeDataSlice,
- 
 });
 
 export const setupStore = () => {

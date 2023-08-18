@@ -15,4 +15,5 @@ export interface MenuTypelInterface {
   useInPdfWithQR: boolean;
   additional: string[],
   image: string;
+  
 }

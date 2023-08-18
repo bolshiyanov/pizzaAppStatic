@@ -13,7 +13,6 @@ import { Pressable, StyleSheet, View } from "react-native";
 import Bar from "@/assets/images/svg/icons/bars-solid.svg";
 import WishListIcon from "@/assets/images/svg/icons/heart-solid.svg";
 import Home from "@/assets/images/svg/icons/house-solid.svg";
-import Star from "@/assets/images/svg/icons/star-solid.svg";
 import Book from "@/assets/images/svg/icons/book-open-solid.svg";
 import Location from "@/assets/images/svg/icons/map-location-dot-solid.svg";
 import ArrowLeft from "@/assets/images/svg/icons/arrow-left-solid.svg";
@@ -45,8 +44,6 @@ export default function RootLayout() {
               )}
             </Pressable>
           ),
-          
-          
         }}
       >
         <Drawer.Screen
@@ -90,7 +87,7 @@ export default function RootLayout() {
         />
 
         <Drawer.Screen
-          name="[name]" // This is the name of the page and must match the url from root
+          name="[type]" // This is the name of the page and must match the url from root
           options={{
             drawerLabel: () => null,
             headerLeft: () => (
@@ -104,7 +101,7 @@ export default function RootLayout() {
                 </Pressable>
               </Link>
             ),
-            
+
             title: "collections",
           }}
         />

@@ -1,10 +1,8 @@
 import React, { useEffect } from "react";
-import ProductsFeedPageTemplate from "@/src/components/ProductsFeedPageTemplate";
+import CollectionsFeedPageTemplate from "@/src/components/CollectionsFeedPageTemplate";
 
 import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 import { fetchData } from "@/store/redusers/dataReducers/combineDataReducer/allDataSlice";
-
-const path = "/";
 
 const AlltemsFeedPage = () => {
   const dispatch = useAppDispatch();
@@ -13,7 +11,7 @@ const AlltemsFeedPage = () => {
   }, []);
   const data = useAppSelector((state) => state.allDataSlice);
 
-  return <ProductsFeedPageTemplate data={data} path={path} />;
+  return <CollectionsFeedPageTemplate data={data} />;
 };
 
 export default AlltemsFeedPage;
