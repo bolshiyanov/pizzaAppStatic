@@ -19,19 +19,37 @@ const ProductPage = () => {
   const allData = useAppSelector((state) => state.allDataSlice);
   const { type } = useLocalSearchParams();
 
-  const dataThisPage: MenuTypelInterface[] = [];
+  const firstDataThisPage: MenuTypelInterface[] = [];
+  const secondDataThisPage: MenuTypelInterface[] = [];
+  const thirdDataThisPage: MenuTypelInterface[] = [];
 
-  allData.forEach((item) => {
-    if (type.includes(item.firstType)) {
-      dataThisPage.push(item);
-    }
-  });
   if (!allData)
     return (
       <View style={[styles.containerActivityIndicator, styles.horizontal]}>
         <ActivityIndicator size="large" />
       </View>
     );
+
+  allData.forEach((item) => {
+    if (type.includes(item.firstType)) {
+      firstDataThisPage.push(item);
+    }
+  });
+  allData.forEach((item) => {
+    if (type.includes(item.secondType)) {
+      secondDataThisPage.push(item);
+    }
+  });
+  allData.forEach((item) => {
+    if (type.includes(item.thirdType)) {
+      thirdDataThisPage.push(item);
+    }
+  });
+  const combinedData = [
+    ...firstDataThisPage,
+    ...secondDataThisPage,
+    ...thirdDataThisPage,
+  ];
 
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
     <Link
@@ -43,14 +61,14 @@ const ProductPage = () => {
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.type}>Type: {item.firstType}</Text>
+        <Text style={styles.type}>Types: {item.secondType} ,{item.firstType}, {item.thirdType}</Text>
       </Pressable>
     </Link>
   );
 
   return (
     <FlatList
-      data={dataThisPage}
+      data={combinedData}
       renderItem={renderItem}
       keyExtractor={(item) => item.name}
       numColumns={2}

@@ -15,7 +15,7 @@ export default [
     useInPdfWithQR: false,
     additional: [],
     order: 0,
-    path:"menu//itemsFive/itemsFiveTwo",
+    path:"menu/itemsFive/itemsFiveTwo",
     image: "https://source.unsplash.com/weekly?vienna"    
   },
   {

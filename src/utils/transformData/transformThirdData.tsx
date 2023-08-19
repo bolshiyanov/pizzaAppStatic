@@ -1,19 +1,19 @@
 import { MenuTypelInterface } from "@/types/menuType";
 import { TransformInterface } from "@/types/transformType";
 
-const groupAndTransformData = (data: MenuTypelInterface[]): TransformInterface[] => {
+const groupAndTransformDataThirdType = (data: MenuTypelInterface[]): TransformInterface[] => {
   const typeMap = new Map();
 
   // Group menu items by type
   data.forEach((item) => {
-    if (!typeMap.has(item.firstType)) {
-      typeMap.set(item.firstType, {
-        type: item.firstType,
+    if (!typeMap.has(item.thirdType)) {
+      typeMap.set(item.thirdType, {
+        type: item.thirdType,
         ids: [],
         image: item.image,
       });
     }
-    typeMap.get(item.firstType).ids.push(item.id);
+    typeMap.get(item.thirdType).ids.push(item.id);
   });
 
   // Convert the map values to an array
@@ -22,4 +22,4 @@ const groupAndTransformData = (data: MenuTypelInterface[]): TransformInterface[]
   return transformData;
 };
 
-export default groupAndTransformData;
+export default groupAndTransformDataThirdType;

@@ -15,7 +15,9 @@ import {
 import { MenuTypelInterface } from "@/types/menuType";
 import { TransformInterface } from "@/types/transformType";
 
-import groupAndTransformData from "../utils/transformData"; // Import the utility function
+import groupAndTransformDatafirstType from "../utils/transformData/transformData"; 
+import groupAndTransformDataSecondType from "../utils/transformData/transformSecondData";
+import groupAndTransformDataThirdType from "../utils/transformData/transformThirdData";
 
 interface ProductsFeedPagelInterface {
   data: MenuTypelInterface[];
@@ -24,8 +26,6 @@ interface ProductsFeedPagelInterface {
 const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
   data,
 }) => {
-  
-
   if (!data)
     return (
       <View style={[styles.containerActivityIndicator, styles.horizontal]}>
@@ -33,29 +33,38 @@ const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
       </View>
     );
 
-  const transformedData = groupAndTransformData(data); // Use the utility function here
+    const transformedDataFirstType = groupAndTransformDatafirstType(data);
+    const transformedDataSecondType = groupAndTransformDataSecondType(data);
+    const transformedDataThirdType = groupAndTransformDataThirdType(data);
+    
+    const combinedData = [
+      ...transformedDataFirstType,
+      ...transformedDataSecondType,
+      ...transformedDataThirdType,
+    ];
 
   const renderItem = ({ item }: { item: TransformInterface }) => (
-    <Link
-      href={`/${isProduction ? item.type + ".html" : item.type}`}
-      asChild
-    >
+    <Link href={`/${isProduction ? item.type + ".html" : item.type}`} asChild>
       <Pressable style={styles.city}>
         <View style={styles.city}>
           <Image style={styles.image} source={{ uri: item.image }} />
           <Text style={styles.name}>{item.type}</Text>
+          <Text style={styles.type}>Collections</Text>
         </View>
       </Pressable>
     </Link>
   );
 
   return (
-    <FlatList
-      data={transformedData} // Use the transformData utility here
-      renderItem={renderItem}
-      keyExtractor={(item) => item.type}
-      numColumns={2}
-    />
+    <>
+      <FlatList
+        data={combinedData} 
+        renderItem={renderItem}
+        keyExtractor={(item) => item.type}
+        numColumns={2}
+      />
+      
+    </>
   );
 };
 
@@ -92,7 +101,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 10,
-  },
+  }, type: {
+    textAlign: "center",
+    fontSize: 10,
+    fontWeight: "300",
+    marginTop: 4,
+  }
 });
 
 export default CollectionsFeedPageTemplate;
