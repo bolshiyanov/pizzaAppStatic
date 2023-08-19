@@ -14,6 +14,7 @@ import Bar from "@/assets/images/svg/icons/bars-solid.svg";
 import WishListIcon from "@/assets/images/svg/icons/heart-solid.svg";
 import Home from "@/assets/images/svg/icons/house-solid.svg";
 import Book from "@/assets/images/svg/icons/book-open-solid.svg";
+import Star from "@/assets/images/svg/icons/star-solid.svg";
 import Location from "@/assets/images/svg/icons/map-location-dot-solid.svg";
 import ArrowLeft from "@/assets/images/svg/icons/arrow-left-solid.svg";
 
@@ -50,10 +51,11 @@ export default function RootLayout() {
           name="index" // This is the name of the page and must match the url from root
           options={{
             drawerLabel: "Home",
-            title: "Static React App",
+            title: "Web & App Builder",
             drawerIcon: (config) => <Home width={28} height={28} />,
           }}
         />
+        
         <Drawer.Screen
           name="menu" // This is the name of the page and must match the url from root
           options={{
@@ -74,6 +76,15 @@ export default function RootLayout() {
               </Link>
             ),
             drawerIcon: (config) => <Book width={28} height={28} />,
+          }}
+        />
+
+        <Drawer.Screen
+          name="wishList" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Wish list",
+            title: "Your wish list",
+            drawerIcon: (config) => <Star width={28} height={28} />,
           }}
         />
 

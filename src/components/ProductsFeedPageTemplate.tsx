@@ -48,12 +48,16 @@ const ProductsFeedPageTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
   );
 
   return (
+   <>
     <FlatList
       data={data}
       renderItem={renderItem}
       keyExtractor={(item) => item.name}
       numColumns={2}
     />
+    <Text style={styles.type}>In this page you can see normal routes for menu</Text>
+    <Text style={styles.type}>...</Text>
+    </>
   );
 };
 

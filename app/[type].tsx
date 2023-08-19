@@ -61,18 +61,28 @@ const ProductPage = () => {
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.type}>Types: {item.secondType} ,{item.firstType}, {item.thirdType}</Text>
+        <Text style={styles.type}>
+          Types: {item.secondType} ,{item.firstType}, {item.thirdType}
+        </Text>
       </Pressable>
     </Link>
   );
 
   return (
-    <FlatList
-      data={combinedData}
-      renderItem={renderItem}
-      keyExtractor={(item) => item.name}
-      numColumns={2}
-    />
+    <>
+      <FlatList
+        data={combinedData}
+        renderItem={renderItem}
+        keyExtractor={(item) => item.name}
+        numColumns={2}
+      />
+      <Text style={styles.type}>
+        In this page you can see general popular groups of responses and
+        personal collections on the basis of intereses this user, his search or
+        engagement in page browsing
+      </Text>
+      <Text style={styles.type}>...</Text>
+    </>
   );
 };
 

@@ -1,7 +1,6 @@
 import { Link } from "expo-router";
 import React, { useEffect } from "react";
 import isProduction from "@/src/utils/isProdaction";
-import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 
 import {
   ActivityIndicator,
@@ -15,7 +14,7 @@ import {
 import { MenuTypelInterface } from "@/types/menuType";
 import { TransformInterface } from "@/types/transformType";
 
-import groupAndTransformDatafirstType from "../utils/transformData/transformData"; 
+import groupAndTransformDatafirstType from "../utils/transformData/transformData";
 import groupAndTransformDataSecondType from "../utils/transformData/transformSecondData";
 import groupAndTransformDataThirdType from "../utils/transformData/transformThirdData";
 
@@ -33,15 +32,15 @@ const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
       </View>
     );
 
-    const transformedDataFirstType = groupAndTransformDatafirstType(data);
-    const transformedDataSecondType = groupAndTransformDataSecondType(data);
-    const transformedDataThirdType = groupAndTransformDataThirdType(data);
-    
-    const combinedData = [
-      ...transformedDataFirstType,
-      ...transformedDataSecondType,
-      ...transformedDataThirdType,
-    ];
+  const transformedDataFirstType = groupAndTransformDatafirstType(data);
+  const transformedDataSecondType = groupAndTransformDataSecondType(data);
+  const transformedDataThirdType = groupAndTransformDataThirdType(data);
+
+  const combinedData = [
+    ...transformedDataFirstType,
+    ...transformedDataSecondType,
+    ...transformedDataThirdType,
+  ];
 
   const renderItem = ({ item }: { item: TransformInterface }) => (
     <Link href={`/${isProduction ? item.type + ".html" : item.type}`} asChild>
@@ -58,12 +57,17 @@ const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
   return (
     <>
       <FlatList
-        data={combinedData} 
+        data={combinedData}
         renderItem={renderItem}
         keyExtractor={(item) => item.type}
         numColumns={2}
       />
-      
+      <Text style={styles.type}>
+        In this page you can see general popular groups of responses and
+        personal collections on the basis of intereses this user, his search or
+        engagement in page browsing
+      </Text>
+      <Text style={styles.type}>...</Text>
     </>
   );
 };
@@ -101,12 +105,13 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 10,
-  }, type: {
+  },
+  type: {
     textAlign: "center",
     fontSize: 10,
     fontWeight: "300",
     marginTop: 4,
-  }
+  },
 });
 
 export default CollectionsFeedPageTemplate;

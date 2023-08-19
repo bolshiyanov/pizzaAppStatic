@@ -1,32 +1,32 @@
 import React from "react";
+import { Link } from "expo-router";
 import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 import { wishListSlice } from "@/store/redusers/wishListReducer/wishListSlice";
 import { tintColorLight } from "@/constants/Colors";
-import Trush from '@/assets/images/svg/icons/trash-can-solid.svg';
+import Trush from "@/assets/images/svg/icons/trash-can-solid.svg";
 import {
+  Pressable,
   View,
   StyleSheet,
   Image,
   Text,
   TouchableOpacity,
 } from "react-native";
-
+import isProduction from "@/src/utils/isProdaction";
 
 interface dataItemInterface {
   id: string;
   name: string;
+  path: string;
   firstType: string;
   image: string;
- 
 }
 
 const { removeFromWishList } = wishListSlice.actions;
 
 const Page = ({ data }: { data: dataItemInterface[] }) => {
   const { items: wishList } = useAppSelector((state) => state.wishListSlice);
-  const wishCaffeAlcoholDataNew = data.filter((item) =>
-    wishList.includes(item.id)
-  );
+  const wishListData = data.filter((item) => wishList.includes(item.id));
   const dispatch = useAppDispatch();
 
   const unsubscribe = (id: string) => {
@@ -34,23 +34,33 @@ const Page = ({ data }: { data: dataItemInterface[] }) => {
   };
 
   return (
-    <View>
-      {wishCaffeAlcoholDataNew.map((item) => (
-        <View style={styles.cardContainer} key={item.id}>
-          <Image style={styles.image} source={{ uri: item.image }} />
-          <View>
-            <Text style={styles.title}>{item.name}</Text>
-            <Text style={styles.subTitle}>{item.firstType}</Text> 
-          </View>
-          <TouchableOpacity
-            style={styles.deleteIcon}
-            onPress={() => unsubscribe(item.id)}
-          >
-            <Trush width={28} height={28} fill={ tintColorLight}/>
-          </TouchableOpacity>
-        </View>
+    <>
+      {wishListData.map((item) => (
+        <Link
+          key={item.id}
+          href={`/${
+            isProduction
+              ? item.path + "/" + item.name + ".html"
+              : item.path + "/" + item.name
+          }`}
+          asChild
+        >
+          <Pressable style={styles.cardContainer} key={item.id}>
+            <Image style={styles.image} source={{ uri: item.image }} />
+            <View>
+              <Text style={styles.title}>{item.name}</Text>
+              <Text style={styles.subTitle}>{item.firstType}</Text>
+            </View>
+            <TouchableOpacity
+              style={styles.deleteIcon}
+              onPress={() => unsubscribe(item.id)}
+            >
+              <Trush width={28} height={28} fill={tintColorLight} />
+            </TouchableOpacity>
+          </Pressable>
+        </Link>
       ))}
-    </View>
+    </>
   );
 };
 const styles = StyleSheet.create({

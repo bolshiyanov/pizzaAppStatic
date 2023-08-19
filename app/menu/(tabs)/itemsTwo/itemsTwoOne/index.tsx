@@ -4,7 +4,7 @@ import ProductsFeedPageTemplate from "@/src/components/ProductsFeedPageTemplate"
 import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 import {fetchData } from "@/store/redusers/dataReducers/twoDataReducers/twoOneSlice";
 
-const path = "/menu/itemsTwo/itemsTwoOne/";
+const path = "menu/itemsTwo/itemsTwoOne/";
 
 const ItemsTwoOneFeedPage = () => {
 
