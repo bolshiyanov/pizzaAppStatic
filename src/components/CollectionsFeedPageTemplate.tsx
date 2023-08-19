@@ -14,7 +14,6 @@ import {
 } from "react-native";
 import { MenuTypelInterface } from "@/types/menuType";
 import { TransformInterface } from "@/types/transformType";
-import { addData } from "@/store/redusers/dataReducers/collectionReducer/collectionSlice";
 
 import groupAndTransformData from "../utils/transformData"; // Import the utility function
 
@@ -25,13 +24,7 @@ interface ProductsFeedPagelInterface {
 const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
   data,
 }) => {
-  const dispatch = useAppDispatch();
-  useEffect(() => {
-    // Use the utility function here
-
-    dispatch(addData(transformedData)); // Dispatch the fetchData action when the component mounts
-    
-  }, [data]);
+  
 
   if (!data)
     return (

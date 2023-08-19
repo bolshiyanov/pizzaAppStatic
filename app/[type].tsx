@@ -31,16 +31,14 @@ const ProductPage = () => {
         <ActivityIndicator size="large" />
       </View>
     );
-
+  // coolection routs http://localhost:8081/menu/itemsFive/itemsFiveTwo/vienna-5-2-1
+  // normal routs     http://localhost:8081/menu/itemsFive/itemsFiveTwo/vienna-5-2-1
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
-    <Link
-      href={`${type}`}
-      asChild
-    >
+    <Link href={`./menu/${item.path}/${item.name}`} asChild>
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
-        <Text style={styles.type}>{item.firstType}</Text>
+        <Text style={styles.type}>Type: {item.firstType}</Text>
       </Pressable>
     </Link>
   );
@@ -104,7 +102,7 @@ const styles = StyleSheet.create({
     fontSize: 10,
     fontWeight: "300",
     marginTop: 4,
-  }
+  },
 });
 
 export default ProductPage;

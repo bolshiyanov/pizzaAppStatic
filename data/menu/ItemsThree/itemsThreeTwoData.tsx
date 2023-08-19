@@ -15,6 +15,7 @@ export default [
     useInPdfWithQR: false,
     additional: [],
     order: 0,
+    path:"/menu/itemsOne/itemsThreeTwo",
     image: "https://source.unsplash.com/weekly?seoul"    
   },
   {
@@ -33,6 +34,7 @@ export default [
     useInPdfWithQR: false,
     additional: [],
     order: 0,
+    path:"/menu/itemsOne/itemsThreeTwo",
     image: "https://source.unsplash.com/weekly?beijing"    
   }
 ]

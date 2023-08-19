@@ -6,14 +6,14 @@ export interface MenuTypelInterface {
   firstType: string;
   secondType: string;
   thirdType: string;
-  properties: string[],
+  properties: string[];
   keyWords: string;
-  pricesTypes: string[],
+  pricesTypes: string[];
   order: number;
   useInPdf: boolean;
   useInPdfWithProperties: boolean;
   useInPdfWithQR: boolean;
-  additional: string[],
+  additional: string[];
+  path: string;
   image: string;
-  
 }

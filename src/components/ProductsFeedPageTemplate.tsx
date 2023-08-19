@@ -1,4 +1,4 @@
-// ProductsFeedPageTemplate.tsx
+
 
 import { Link } from "expo-router";
 import React from "react";
@@ -41,6 +41,7 @@ const ProductsFeedPageTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
+        <Text style={styles.type}>Type: {item.firstType}</Text>
         <Indicator id={item.id} />
       </Pressable>
     </Link>
@@ -89,7 +90,12 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "space-around",
     padding: 10,
-  },
+  }, type: {
+    textAlign: "center",
+    fontSize: 10,
+    fontWeight: "300",
+    marginTop: 4,
+  }
 });
 
 export default ProductsFeedPageTemplate;

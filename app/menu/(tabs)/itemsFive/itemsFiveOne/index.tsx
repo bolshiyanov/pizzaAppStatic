@@ -12,11 +12,11 @@ const ItemsFiveOneFeedPage = () => {
     dispatch(fetchData()); // Dispatch the fetchData action when the component mounts
   }, []);
   const data = useAppSelector((state) => state.fiveOneDataSlice);
-  
+   
 
   return (
     <ProductsFeedPageTemplate data={data} path={path} />
   );
 };
 
-export default ItemsFiveOneFeedPage;
+export default ItemsFiveOneFeedPage; 
