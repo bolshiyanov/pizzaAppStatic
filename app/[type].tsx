@@ -34,7 +34,7 @@ const ProductPage = () => {
   // coolection routs http://localhost:8081/menu/itemsFive/itemsFiveTwo/vienna-5-2-1
   // normal routs     http://localhost:8081/menu/itemsFive/itemsFiveTwo/vienna-5-2-1
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
-    <Link href={`./menu/${item.path}/${item.name}`} asChild>
+    <Link href={`https://pizza-app-static.vercel.app/menu/${item.path}/${item.name}`} asChild>
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>
