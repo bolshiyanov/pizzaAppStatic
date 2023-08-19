@@ -4,7 +4,7 @@ export default [
     name: "amman-5-1-1",
     components: "ingredient, ingredient, ingredient, ingredient, ",
     descriptions: "Exploring the serene countryside is a wonderful way to unwind. Walking through picturesque fields and forests offers a chance to connect with nature's beauty. Fresh air invigorates, tranquility calms, and glimpses of wildlife bring joy. These outings provide a peaceful escape and rejuvenating experience.",
-    firstType: "AAAAAA",
+    firstType: "LALALA",
     secondType: "111111",
     thirdType: "!!!!!!",
     properties: [],

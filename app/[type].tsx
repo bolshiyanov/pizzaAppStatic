@@ -13,6 +13,7 @@ import {
 } from "react-native";
 import { useLocalSearchParams } from "expo-router";
 import { MenuTypelInterface } from "@/types/menuType";
+import websiteAddress from "@/config";
 
 const ProductPage = () => {
   const allData = useAppSelector((state) => state.allDataSlice);
@@ -31,10 +32,14 @@ const ProductPage = () => {
         <ActivityIndicator size="large" />
       </View>
     );
-  // coolection routs http://localhost:8081/menu/itemsFive/itemsFiveTwo/vienna-5-2-1
-  // normal routs     http://localhost:8081/menu/itemsFive/itemsFiveTwo/vienna-5-2-1
+
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
-    <Link href={`https://pizza-app-static.vercel.app/menu/${item.path}/${item.name}`} asChild>
+    <Link
+      href={`${websiteAddress}/${item.path}/${
+        isProduction ? item.name + ".html" : item.name
+      }`}
+      asChild
+    >
       <Pressable style={styles.city}>
         <Image style={styles.image} source={{ uri: item.image }} />
         <Text style={styles.name}>{item.name}</Text>

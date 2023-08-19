@@ -37,7 +37,7 @@ const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
 
   const renderItem = ({ item }: { item: TransformInterface }) => (
     <Link
-      href={`/${item.type}${isProduction ? item.type + ".html" : item.type}`}
+      href={`/${isProduction ? item.type + ".html" : item.type}`}
       asChild
     >
       <Pressable style={styles.city}>

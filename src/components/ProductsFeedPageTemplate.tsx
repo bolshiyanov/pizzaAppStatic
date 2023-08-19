@@ -35,7 +35,7 @@ const ProductsFeedPageTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
 
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
     <Link
-      href={`${path}${isProduction ? item.name + ".html" : item.name}`}
+      href={`/${path}${isProduction ? item.name + ".html" : item.name}`}
       asChild
     >
       <Pressable style={styles.city}>
