@@ -13,10 +13,12 @@ import {
 } from "react-native";
 import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 import isProduction from "@/src/utils/isProdaction";
-import Indicator from "@/src/components/common/Indicator";
+import AddToWishListInSearch from "@/src/components/AddToWishListInSearch";
 import { MenuTypelInterface } from "@/types/menuType";
-import SearchIcon from "@/assets/images/svg/icons/magnifying-glass-solid.svg";
+import Rotate from "@/assets/images/svg/icons/rotate-solid.svg";
 import websiteAddress from "@/config";
+import { tintColorLight } from "@/constants/Colors";
+
 interface dataItemInterface {
   id: string;
   name: string;
@@ -28,12 +30,13 @@ interface dataItemInterface {
 const SearchPage = () => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState<MenuTypelInterface[]>([]);
-
+  const [reload, setReload] = useState(0);
   const allData = useAppSelector((state) => state.allDataSlice);
 
   useEffect(() => {
-    setFilteredData(allData)
-  }, []);
+    setSearch("");
+    setFilteredData(allData);
+  }, [reload]);
 
   useEffect(() => {
     const filteredResults = allData.filter((item) => {
@@ -57,13 +60,12 @@ const SearchPage = () => {
 
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
     <Link
-    href={`${websiteAddress}/${item.path}/${
-      isProduction ? item.name + ".html" : item.name
-    }`}
-    asChild
-  >
-    
-      <Pressable style={styles.cardContainer} key={item.id}>
+      href={`${websiteAddress}/${item.path}/${
+        isProduction ? item.name + ".html" : item.name
+      }`}
+      asChild
+    >
+      <Pressable style={styles.cardContainer} key={item.id} onPress={() => {}}>
         <Image style={styles.image} source={{ uri: item.image }} />
 
         <View>
@@ -71,22 +73,29 @@ const SearchPage = () => {
           <Text style={styles.subTitle}>{item.firstType.slice(0, 50)}</Text>
         </View>
 
-        <TouchableOpacity
-          style={styles.deleteIcon}
-          onPress={() => {}}
-        ></TouchableOpacity>
+        <AddToWishListInSearch id={item.id} />
       </Pressable>
-      </Link>
+    </Link>
   );
 
   return (
     <View>
-      <TextInput
-        style={styles.searchInput}
-        placeholder="Search..."
-        value={search}
-        onChangeText={setSearch}
-      />
+      <View style={styles.searchInputBox}>
+        <TextInput
+          style={styles.searchInput}
+          placeholder="Search..."
+          value={search}
+          onChangeText={setSearch}
+        />
+        <TouchableOpacity
+          style={styles.deleteIcon}
+          onPress={() => setReload(reload + 1)}
+        >
+          <View style={styles.searchIconBox}>
+            <Rotate width={24} height={24} fill={tintColorLight} />
+          </View>
+        </TouchableOpacity>
+      </View>
       <FlatList
         data={filteredData}
         renderItem={renderItem}
@@ -144,12 +153,21 @@ const styles = StyleSheet.create({
     fontWeight: "300",
     marginTop: 4,
   },
+  searchInputBox: {
+    backgroundColor: "white",
+    position: "relative",
+  },
   searchInput: {
     padding: 10,
     marginBottom: 10,
     borderWidth: 1,
     borderColor: "lightgray",
     borderRadius: 5,
+  },
+  searchIconBox: {
+    position: "absolute",
+    right: 8,
+    top: 10,
   },
 });
 
