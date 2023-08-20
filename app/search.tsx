@@ -16,7 +16,7 @@ import isProduction from "@/src/utils/isProdaction";
 import Indicator from "@/src/components/common/Indicator";
 import { MenuTypelInterface } from "@/types/menuType";
 import SearchIcon from "@/assets/images/svg/icons/magnifying-glass-solid.svg";
-
+import websiteAddress from "@/config";
 interface dataItemInterface {
   id: string;
   name: string;
@@ -52,12 +52,13 @@ const SearchPage = () => {
     );
 
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
-    
     <Link
-      key={item.id}
-      href={`/${item.path}${isProduction ? "/" + item.name + ".html" : "/" + item.name}`}
-      asChild
-    >
+    href={`${websiteAddress}/${item.path}/${
+      isProduction ? item.name + ".html" : item.name
+    }`}
+    asChild
+  >
+    
       <Pressable style={styles.cardContainer} key={item.id}>
         <Image style={styles.image} source={{ uri: item.image }} />
 
@@ -71,7 +72,7 @@ const SearchPage = () => {
           onPress={() => {}}
         ></TouchableOpacity>
       </Pressable>
-    </Link>
+      </Link>
   );
 
   return (

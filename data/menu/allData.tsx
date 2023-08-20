@@ -504,22 +504,4 @@ export default
 	"useInPdf": true,
 	"useInPdfWithProperties": false,
 	"useInPdfWithQR": false
-}, {
-	"additional": [],
-	"components": "ingredient, ingredient, ingredient, ingredient, ",
-	"descriptions": "Indulge in a gastronomic adventure like no other. Our menu invites you to explore a symphony of exquisite flavors that celebrate the essence of fine dining. From succulent appetizers to decadent desserts, each dish is a harmonious blend of textures and tastes that captivate your senses and elevate your dining experience.",
-	"firstType": "BBBBB",
-	"id": "trhergergwegrth",
-	"image": "https://source.unsplash.com/weekly?new-delhi",
-	"keyWords": "pizza, napolitana, classic",
-	"name": "new-delhi-5-3-2",
-	"order": 0,
-	"path": "menu/itemsFive/itemsFiveThree",
-	"pricesTypes": [],
-	"properties": [],
-	"secondType": "33333",
-	"thirdType": "!!!!!",
-	"useInPdf": true,
-	"useInPdfWithProperties": false,
-	"useInPdfWithQR": false
 }]
