@@ -24,6 +24,24 @@ export default function RootLayout() {
           ),
         }}
       /> 
+      <Stack.Screen
+        name="[name]"
+        options={{
+          presentation: "modal",
+          title: "Go back",
+          headerLeft: () => (
+            <Link href="../" asChild>
+              <Pressable>
+                {({ pressed }) => (
+                  <View>
+                    <ArrowLeft width={28} height={28} />
+                  </View>
+                )}
+              </Pressable>
+            </Link>
+          ),
+        }}
+      /> 
     </Stack>
   );
 }

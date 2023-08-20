@@ -1,6 +1,7 @@
 import { Link } from "expo-router";
-import React, { useEffect } from "react";
+import React from "react";
 import isProduction from "@/src/utils/isProdaction";
+import { useAppSelector } from "@/src/utils/hooks/redux";
 
 import {
   ActivityIndicator,
@@ -22,36 +23,76 @@ interface ProductsFeedPagelInterface {
   data: MenuTypelInterface[];
 }
 
+const wishListType = "wish_list";
+
 const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
   data,
 }) => {
-  if (!data)
+  const wishListData = useAppSelector((state) => state.wishListSlice);
+  const allData = useAppSelector((state) => state.allDataSlice);
+
+  const allWishListData = allData.filter((item) =>
+    wishListData.items.includes(item.id)
+  );
+
+  const modifiedWishListData: MenuTypelInterface[] = allWishListData.map(
+    (item) => ({
+      ...item,
+      firstType: wishListType,
+    })
+  );
+
+  if (!data) {
     return (
       <View style={[styles.containerActivityIndicator, styles.horizontal]}>
         <ActivityIndicator size="large" />
       </View>
     );
+  }
 
+  const transformedWishListType =
+    groupAndTransformDatafirstType(modifiedWishListData);
   const transformedDataFirstType = groupAndTransformDatafirstType(data);
   const transformedDataSecondType = groupAndTransformDataSecondType(data);
   const transformedDataThirdType = groupAndTransformDataThirdType(data);
 
-  const combinedData = [
+  const combinedData: TransformInterface[] = [
+    ...transformedWishListType,
     ...transformedDataFirstType,
     ...transformedDataSecondType,
     ...transformedDataThirdType,
   ];
 
   const renderItem = ({ item }: { item: TransformInterface }) => (
-    <Link href={`/${isProduction ? item.type + ".html" : item.type}`} asChild>
-      <Pressable style={styles.city}>
-        <View style={styles.city}>
-          <Image style={styles.image} source={{ uri: item.image }} />
-          <Text style={styles.name}>{item.type}</Text>
-          <Text style={styles.type}>Collections</Text>
-        </View>
-      </Pressable>
-    </Link>
+    <>
+      {item.type === wishListType ? (
+        <Link
+          href={`/menu/modal`}
+          asChild
+        >
+          <Pressable style={styles.city}>
+            <View style={styles.city}>
+              <Image style={styles.image} source={{ uri: item.image }} />
+              <Text style={styles.name}>WISH LIST</Text>
+              <Text style={styles.type}>Your choise</Text>
+            </View>
+          </Pressable>
+        </Link>
+      ) : (
+        <Link
+          href={`/${isProduction ? item.type + ".html" : item.type}`}
+          asChild
+        >
+          <Pressable style={styles.city}>
+            <View style={styles.city}>
+              <Image style={styles.image} source={{ uri: item.image }} />
+              <Text style={styles.name}>{item.type}</Text>
+              <Text style={styles.type}>Collections</Text>
+            </View>
+          </Pressable>
+        </Link>
+      )}
+    </>
   );
 
   return (

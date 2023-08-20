@@ -51,11 +51,11 @@ export default function RootLayout() {
           name="index" // This is the name of the page and must match the url from root
           options={{
             drawerLabel: "Home",
-            title: "Web & App Builder",
+            title: "Static React Web & App Builder",
             drawerIcon: (config) => <Home width={28} height={28} />,
           }}
         />
-        
+
         <Drawer.Screen
           name="menu" // This is the name of the page and must match the url from root
           options={{
@@ -76,15 +76,6 @@ export default function RootLayout() {
               </Link>
             ),
             drawerIcon: (config) => <Book width={28} height={28} />,
-          }}
-        />
-
-        <Drawer.Screen
-          name="wishList" // This is the name of the page and must match the url from root
-          options={{
-            drawerLabel: "Wish list",
-            title: "Your wish list",
-            drawerIcon: (config) => <Star width={28} height={28} />,
           }}
         />
 
