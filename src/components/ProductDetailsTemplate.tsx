@@ -93,16 +93,7 @@ const ProductDetailsTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
   
 };
 
-export async function generateStaticParams(): Promise<
-  Record<string, string>[]
-> {
-  
-  // const data = useAppSelector((state) => state.allDataSlice); // Fetch the data again
-  
-  return Promise.resolve(
-    data.map((item) => ({ name: item.name }))
-  );
-}
+
 
 const styles = StyleSheet.create({
   container: {
