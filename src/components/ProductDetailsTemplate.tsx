@@ -11,7 +11,7 @@ import { MenuTypelInterface } from "@/types/menuType";
 import { currencySymbol } from "@/data/settings/currency";
 // import { useAppSelector } from "@/src/utils/hooks/redux";
 
-import data from "@/data/menu/allData";
+
 interface ProductsFeedPageTemplateProps {
   data: MenuTypelInterface[];
 }

@@ -485,7 +485,8 @@ export default
 	"useInPdf": true,
 	"useInPdfWithProperties": false,
 	"useInPdfWithQR": false
-}, {
+}
+, {
 	"additional": [],
 	"components": "ingredient, ingredient, ingredient, ingredient, ",
 	"descriptions": "Elevate your taste buds with our culinary creations. Immerse yourself in a world of delectable dishes, meticulously crafted to tantalize your palate. From sizzling starters to luscious desserts, every bite is a journey of flavors that dance on your tongue. Experience the art of dining in every mouthwatering moment.",

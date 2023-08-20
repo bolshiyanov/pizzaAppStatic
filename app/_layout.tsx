@@ -16,6 +16,8 @@ import Home from "@/assets/images/svg/icons/house-solid.svg";
 import Book from "@/assets/images/svg/icons/book-open-solid.svg";
 import Star from "@/assets/images/svg/icons/star-solid.svg";
 import Location from "@/assets/images/svg/icons/map-location-dot-solid.svg";
+import SearchIcon from "@/assets/images/svg/icons/magnifying-glass-solid.svg";
+
 import ArrowLeft from "@/assets/images/svg/icons/arrow-left-solid.svg";
 
 import Counter from "@/src/components/common/counter";
@@ -79,6 +81,14 @@ export default function RootLayout() {
           }}
         />
 
+        <Drawer.Screen
+          name="search" // This is the name of the page and must match the url from root
+          options={{
+            drawerLabel: "Search",
+            title: "search",
+            drawerIcon: (config) => <SearchIcon width={28} height={28} />,
+          }}
+        />
         <Drawer.Screen
           name="contacts" // This is the name of the page and must match the url from root
           options={{
