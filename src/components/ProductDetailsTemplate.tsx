@@ -9,7 +9,7 @@ import isProduction from "@/src/utils/isProdaction";
 import { MenuTypelInterface } from "@/types/menuType";
 
 import { currencySymbol } from "@/data/settings/currency";
-
+import { useAppSelector } from "@/src/utils/hooks/redux";
 interface ProductsFeedPageTemplateProps {
   data: MenuTypelInterface[];
 }
@@ -87,7 +87,19 @@ const ProductDetailsTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
       </ScrollView>
     </>
   );
+
+  
 };
+
+export async function generateStaticParams(): Promise<
+  Record<string, string>[]
+> {
+  const data = useAppSelector((state) => state.allDataSlice); // Fetch the data again
+
+  return Promise.resolve(
+    data.map((item) => ({ name: item.name }))
+  );
+}
 
 const styles = StyleSheet.create({
   container: {
