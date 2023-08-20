@@ -9,7 +9,9 @@ import isProduction from "@/src/utils/isProdaction";
 import { MenuTypelInterface } from "@/types/menuType";
 
 import { currencySymbol } from "@/data/settings/currency";
-import { useAppSelector } from "@/src/utils/hooks/redux";
+// import { useAppSelector } from "@/src/utils/hooks/redux";
+
+import data from "@/data/menu/allData";
 interface ProductsFeedPageTemplateProps {
   data: MenuTypelInterface[];
 }
@@ -30,7 +32,7 @@ const ProductDetailsTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
     : updatedName;
 
   const item = data.find((c) => c.name.toString() === selectedName);
-
+ 
   return (
     <>
       {item && (
@@ -94,8 +96,9 @@ const ProductDetailsTemplate: React.FC<ProductsFeedPageTemplateProps> = ({
 export async function generateStaticParams(): Promise<
   Record<string, string>[]
 > {
-  const data = useAppSelector((state) => state.allDataSlice); // Fetch the data again
-
+  
+  // const data = useAppSelector((state) => state.allDataSlice); // Fetch the data again
+  
   return Promise.resolve(
     data.map((item) => ({ name: item.name }))
   );
