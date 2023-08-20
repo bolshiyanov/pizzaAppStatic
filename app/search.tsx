@@ -30,9 +30,9 @@ const SearchPage = () => {
   const [filteredData, setFilteredData] = useState<MenuTypelInterface[]>([]);
 
   const allData = useAppSelector((state) => state.allDataSlice);
+
   useEffect(() => {
-    setSearch(''),
-    setFilteredData([])
+    setFilteredData(allData)
   }, []);
 
   useEffect(() => {
