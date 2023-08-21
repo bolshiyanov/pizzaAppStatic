@@ -104,7 +104,7 @@ const CollectionsFeedPageTemplate: React.FC<ProductsFeedPagelInterface> = ({
         numColumns={2}
       />
       <Text style={styles.type}>
-        In this page you can see general popular groups of responses and
+       1/ In this page you can see general popular groups of responses and
         personal collections on the basis of intereses this user, his search or
         engagement in page browsing
       </Text>
