@@ -1,8 +1,6 @@
-import React, { useEffect, useState } from "react";
-import { Link } from "expo-router";
+import React, { useState } from "react";
 import {
   ActivityIndicator,
-  Pressable,
   View,
   StyleSheet,
   Image,
@@ -11,14 +9,11 @@ import {
   TextInput,
   TouchableOpacity,
 } from "react-native";
-import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
-import isProduction from "@/src/utils/isProdaction";
+import { useAppSelector } from "@/src/utils/hooks/redux";
 import AddToWishListInSearch from "@/src/components/AddToWishListInSearch";
-import { MenuTypelInterface } from "@/types/menuType";
 import Rotate from "@/assets/images/svg/icons/rotate-solid.svg";
-import websiteAddress from "@/config";
 import { tintColorLight } from "@/constants/Colors";
-import allData from "@/data/menu/allData";
+import { MenuTypelInterface } from "@/types/menuType";
 
 interface dataItemInterface {
   id: string;
@@ -30,29 +25,10 @@ interface dataItemInterface {
 
 const SearchPage = () => {
   const [search, setSearch] = useState("");
-  const [filteredData, setFilteredData] = useState<MenuTypelInterface[]>([]);
   const [reload, setReload] = useState(0);
-  
-  
-  // const allData = useAppSelector((state) => state.allDataSlice);
 
-  useEffect(() => {
-    setSearch("");
-    setFilteredData(allData);
-  }, [reload]);
-
-  useEffect(() => {
-    const filteredResults = allData.filter((item) => {
-      return (
-        item.name.toLowerCase().includes(search.toLowerCase()) ||
-        item.firstType.toLowerCase().includes(search.toLowerCase()) ||
-        item.secondType.toLowerCase().includes(search.toLowerCase()) ||
-        item.thirdType.toLowerCase().includes(search.toLowerCase())
-      );
-    });
-
-    setFilteredData(filteredResults);
-  }, [search, allData]);
+  const allData = useAppSelector((state) => state.allDataSlice);
+  const filteredData = filterData(allData, search);
 
   if (!allData)
     return (
@@ -62,18 +38,16 @@ const SearchPage = () => {
     );
 
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
-    
-      <View style={styles.cardContainer} key={item.id} >
-        <Image style={styles.image} source={{ uri: item.image }} />
+    <View style={styles.cardContainer} key={item.id}>
+      <Image style={styles.image} source={{ uri: item.image }} />
 
-        <View>
-          <Text style={styles.title}>{item.name}</Text>
-          <Text style={styles.subTitle}>{item.firstType.slice(0, 50)}</Text>
-        </View>
-
-        <AddToWishListInSearch id={item.id} />
+      <View>
+        <Text style={styles.title}>{item.name}</Text>
+        <Text style={styles.subTitle}>{item.firstType.slice(0, 50)}</Text>
       </View>
-  
+
+      <AddToWishListInSearch id={item.id} />
+    </View>
   );
 
   return (
@@ -85,14 +59,7 @@ const SearchPage = () => {
           value={search}
           onChangeText={setSearch}
         />
-        <TouchableOpacity
-          style={styles.deleteIcon}
-          onPress={() => setReload(reload + 1)}
-        >
-          <View style={styles.searchIconBox}>
-            <Rotate width={24} height={24} fill={tintColorLight} />
-          </View>
-        </TouchableOpacity>
+        
       </View>
       <FlatList
         data={filteredData}
@@ -104,6 +71,17 @@ const SearchPage = () => {
       <Text style={styles.type}>...</Text>
     </View>
   );
+};
+
+const filterData = (data: MenuTypelInterface[], searchTerm: string) => {
+  return data.filter((item) => {
+    return (
+      item.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.firstType.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.secondType.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      item.thirdType.toLowerCase().includes(searchTerm.toLowerCase())
+    );
+  });
 };
 const styles = StyleSheet.create({
   cardContainer: {

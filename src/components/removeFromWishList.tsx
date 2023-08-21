@@ -1,28 +1,18 @@
 import React from "react";
 import { Link } from "expo-router";
-import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
-import { wishListSlice } from "@/store/redusers/wishListReducer/wishListSlice";
-import { tintColorLight } from "@/constants/Colors";
-import Trush from "@/assets/images/svg/icons/trash-can-solid.svg";
-import {
-  Pressable,
-  View,
-  StyleSheet,
-  Image,
-  Text,
-  TouchableOpacity,
-} from "react-native";
+import { useAppSelector } from "@/src/utils/hooks/redux";
+import RemoveFromWishListDispatch from "@/src/utils/removeFromWishListDispatch";
+import { Pressable, View, StyleSheet, Image, Text } from "react-native";
 import isProduction from "@/src/utils/isProdaction";
 
-const { removeFromWishList } = wishListSlice.actions;
-
-const Page = () => {
+const RemoveFromWishList = () => {
   const data = useAppSelector((state) => state.allDataSlice);
   const { items: wishList } = useAppSelector((state) => state.wishListSlice);
-  
+
   const wishListData = data.filter((item) => wishList.includes(item.id));
-  
-  const dispatch = useAppDispatch();
+
+  const handleRemoveClick = (id: string) => {
+  };
 
   return (
     <>
@@ -44,12 +34,9 @@ const Page = () => {
               <Text style={styles.subTitle}>{item.path}</Text>
             </View>
 
-            <TouchableOpacity
-              style={styles.deleteIcon}
-              onPress={() => dispatch(removeFromWishList(item.id))}
-            >
-              <Trush width={28} height={28} fill={tintColorLight} />
-            </TouchableOpacity>
+            <RemoveFromWishListDispatch id={item.id} model={"icon"}
+              onClick={() => handleRemoveClick(item.id)}
+            />
           </Pressable>
         </Link>
       ))}
@@ -89,4 +76,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Page;
+export default RemoveFromWishList;

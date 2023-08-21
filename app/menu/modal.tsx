@@ -1,10 +1,9 @@
 import React from "react";
-import Remove from "@/src/components/removeFromWishList";
-
+import RemoveFromWishList from "@/src/components/RemoveFromWishList";
 const WishListCoffeeComponent = () => {
   
   return (
-    <Remove />    
+    <RemoveFromWishList />    
   );
 };
 
