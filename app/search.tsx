@@ -59,13 +59,8 @@ const SearchPage = () => {
     );
 
   const renderItem = ({ item }: { item: MenuTypelInterface }) => (
-    <Link
-      href={`${websiteAddress}/${item.path}/${
-        isProduction ? item.name + ".html" : item.name
-      }`}
-      asChild
-    >
-      <Pressable style={styles.cardContainer} key={item.id} onPress={() => {}}>
+    
+      <View style={styles.cardContainer} key={item.id} >
         <Image style={styles.image} source={{ uri: item.image }} />
 
         <View>
@@ -74,8 +69,8 @@ const SearchPage = () => {
         </View>
 
         <AddToWishListInSearch id={item.id} />
-      </Pressable>
-    </Link>
+      </View>
+  
   );
 
   return (
@@ -159,7 +154,6 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     padding: 10,
-    marginBottom: 10,
     borderWidth: 1,
     borderColor: "lightgray",
     borderRadius: 5,
