@@ -22,9 +22,7 @@ const Page = ({ data }: { data: dataItemInterface[] }) => {
   const wishListData = data.filter((item) => wishList.includes(item.id));
   const dispatch = useAppDispatch();
 
-  const unsubscribe = (id: string) => {
-    dispatch(removeFromWishList(id));
-  };
+ 
 
   return (
     <>
@@ -45,7 +43,7 @@ const Page = ({ data }: { data: dataItemInterface[] }) => {
 
             <TouchableOpacity
               style={styles.deleteIcon}
-              onPress={() => unsubscribe(item.id)}
+              onPress={() => dispatch(removeFromWishList(item.id))}
             >
               <Trush width={28} height={28} fill={tintColorLight} />
             </TouchableOpacity>

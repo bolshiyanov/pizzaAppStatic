@@ -160,8 +160,8 @@ const styles = StyleSheet.create({
   },
   searchIconBox: {
     position: "absolute",
-    right: 8,
-    top: 10,
+    right: 14,
+    top: 9,
   },
 });
 
