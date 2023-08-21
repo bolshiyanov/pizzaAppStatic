@@ -18,6 +18,7 @@ import { MenuTypelInterface } from "@/types/menuType";
 import Rotate from "@/assets/images/svg/icons/rotate-solid.svg";
 import websiteAddress from "@/config";
 import { tintColorLight } from "@/constants/Colors";
+import allData from "@/data/menu/allData";
 
 interface dataItemInterface {
   id: string;
@@ -31,7 +32,9 @@ const SearchPage = () => {
   const [search, setSearch] = useState("");
   const [filteredData, setFilteredData] = useState<MenuTypelInterface[]>([]);
   const [reload, setReload] = useState(0);
-  const allData = useAppSelector((state) => state.allDataSlice);
+  
+  
+  // const allData = useAppSelector((state) => state.allDataSlice);
 
   useEffect(() => {
     setSearch("");
