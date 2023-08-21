@@ -4,42 +4,45 @@ import { useAppDispatch, useAppSelector } from "@/src/utils/hooks/redux";
 import { wishListSlice } from "@/store/redusers/wishListReducer/wishListSlice";
 import { tintColorLight } from "@/constants/Colors";
 import Trush from "@/assets/images/svg/icons/trash-can-solid.svg";
-import { Pressable, View, StyleSheet, Image, Text, TouchableOpacity } from "react-native";
+import {
+  Pressable,
+  View,
+  StyleSheet,
+  Image,
+  Text,
+  TouchableOpacity,
+} from "react-native";
 import isProduction from "@/src/utils/isProdaction";
-
-interface dataItemInterface {
-  id: string;
-  name: string;
-  path: string;
-  firstType: string;
-  image: string;
-}
 
 const { removeFromWishList } = wishListSlice.actions;
 
-const Page = ({ data }: { data: dataItemInterface[] }) => {
+const Page = () => {
+  const data = useAppSelector((state) => state.allDataSlice);
   const { items: wishList } = useAppSelector((state) => state.wishListSlice);
+  
   const wishListData = data.filter((item) => wishList.includes(item.id));
+  
   const dispatch = useAppDispatch();
-
- 
 
   return (
     <>
       {wishListData.map((item) => (
-        <Link key={item.id}
-          href={`/${isProduction ? item.path + "/" + item.name + ".html" : item.path + "/" + item.name}`}
+        <Link
+          key={item.id}
+          href={`/${
+            isProduction
+              ? item.path + "/" + item.name + ".html"
+              : item.path + "/" + item.name
+          }`}
           asChild
         >
           <Pressable style={styles.cardContainer} key={item.id}>
             <Image style={styles.image} source={{ uri: item.image }} />
-            
-            
+
             <View>
               <Text style={styles.title}>{item.name}</Text>
               <Text style={styles.subTitle}>{item.path}</Text>
             </View>
-
 
             <TouchableOpacity
               style={styles.deleteIcon}
