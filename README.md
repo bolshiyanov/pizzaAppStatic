@@ -5,7 +5,7 @@
 
 ## 💙 Author
 
-Roman Bolshiyanov < status : open for cooperation, look job >
+Roman Bolshiyanov `status : open for cooperation, look job`
 
 ## License
 
